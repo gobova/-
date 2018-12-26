@@ -1,0 +1,23 @@
+import pymorphy2 
+
+a = "предложение, связанный текст; связная последовательность символов." 
+a_split = a.split(' ') 
+
+File=open("itog.txt","w") 
+
+morph = pymorphy2.MorphAnalyzer() 
+
+for a in a_split: 
+parse1 = morph.parse(a)[0] 
+File.write("простой разбор ") 
+File.write(str(parse1)) 
+result = parse1.normalized 
+File.write("нормализовано: ") 
+File.write(str(result)) 
+sklon = parse1.inflect({"gent"}) 
+File.write("склонение в родительном падеже: ") 
+File.write(str(sk)) 
+lex = parse1.lexeme 
+File.write("леммы и лексемы: ") 
+File.write(str(lex)) 
+File.write("***")
